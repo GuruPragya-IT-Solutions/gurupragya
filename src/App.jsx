@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './App.css';
 import './index.css';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Import React Router components
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Nav from './components/Nav';
 import Main from './components/Main';
 import Abt from './components/Abt';

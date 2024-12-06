@@ -9,12 +9,12 @@ function Footer() {
           <h2 className="font-semibold mb-4 text-lg">Navigation</h2>
           <ul className="space-y-2">
             <li>
-              <a href="#" className="hover:text-gray-600 transition">
+              <a href="/" className="hover:text-gray-600 transition">
                 Home
               </a>
             </li>
             <li>
-              <a href="#" className="hover:text-gray-600 transition">
+              <a href="/about" className="hover:text-gray-600 transition">
                 About
               </a>
             </li>
@@ -23,7 +23,7 @@ function Footer() {
                 Services
               </a>
             </li>
-            <li>
+            {/* <li>
               <a href="#" className="hover:text-gray-600 transition">
                 Works
               </a>
@@ -32,9 +32,9 @@ function Footer() {
               <a href="#" className="hover:text-gray-600 transition">
                 Reviews
               </a>
-            </li>
+            </li> */}
             <li>
-              <a href="#" className="hover:text-gray-600 transition">
+              <a href="/contact" className="hover:text-gray-600 transition">
                 Contact
               </a>
             </li>
@@ -50,7 +50,7 @@ function Footer() {
             GET IN <span className="text-gray-500">TOUCH</span>
           </h1>
           <p className="mt-2 text-sm">
-            © {new Date().getFullYear()} Shivika Garg. All Rights Reserved.
+            © {new Date().getFullYear()} Made with ❤ by Shivika garg.
           </p>
         </div>
 
@@ -60,14 +60,14 @@ function Footer() {
           <ul className="space-y-2">
             <li>
               <a
-                href="#"
+                href="https://www.linkedin.com/in/gurupragya-it-solutions-a02795338"
                 className="flex items-center space-x-2 hover:text-gray-600 transition"
               >
                 <FaLinkedin />
                 <span>LinkedIn</span>
               </a>
             </li>
-            <li>
+            {/* <li>
               <a
                 href="#"
                 className="flex items-center space-x-2 hover:text-gray-600 transition"
@@ -75,10 +75,10 @@ function Footer() {
                 <FaYoutube />
                 <span>YouTube</span>
               </a>
-            </li>
+            </li> */}
             <li>
               <a
-                href="#"
+                href="https://www.instagram.com/gurupragyaitsolutions/?hl=en"
                 className="flex items-center space-x-2 hover:text-gray-600 transition"
               >
                 <FaInstagram />
@@ -87,7 +87,7 @@ function Footer() {
             </li>
             <li>
               <a
-                href="#"
+                href="https://github.com/GuruPragya-IT-Solutions"
                 className="flex items-center space-x-2 hover:text-gray-600 transition"
               >
                 <FaGithub />

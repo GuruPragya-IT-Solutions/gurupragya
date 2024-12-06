@@ -4,25 +4,39 @@ import { Link } from "react-router-dom"; // Import Link from react-router-dom
 function Nav() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isMobileDropdownOpen, setIsMobileDropdownOpen] = useState(false); // State for mobile dropdown
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
+  const toggleMobileDropdown = () => {
+    setIsMobileDropdownOpen(!isMobileDropdownOpen); // Toggle mobile dropdown visibility
+  };
+
   return (
-    <nav className="bg-white shadow-lg font-['pacifico'] fixed top-0 w-full z-50 min-h-[12vh]">
-      <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
-        {/* Left Links */}
+    <nav className="bg-white shadow-lg font-['pacifico'] fixed top-0 w-full z-50 min-h-[8vh]">
+      <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
+        {/* Logo (Aligned to the left) */}
+        <div className="flex items-center space-x-3 mr-auto">
+          <img
+            src="https://i.imgur.com/9gxMIrq.png"
+            alt="Logo"
+            className="h-24"
+          />
+        </div>
+
+        {/* Left Links (hidden on small screens) */}
         <div className="flex space-x-12 text-lg font-medium hidden md:flex items-center">
           <Link
             to="/"
-            className="text-blue-600 hover:bg-blue-600 hover:text-white hover:border-2 hover:border-blue-600 px-6 py-3 rounded-full transition-all duration-100 ease-in"
+            className="text-blue-600 hover:bg-blue-600 hover:text-white hover:border-2 hover:border-blue-600 px-5 py-2 rounded-full transition-all duration-100 ease-in"
           >
             Home
           </Link>
           <Link
             to="/about"
-            className="text-blue-600 hover:bg-blue-600 hover:text-white hover:border-2 hover:border-blue-600 px-6 py-3 rounded-full transition-all duration-100 ease-in"
+            className="text-blue-600 hover:bg-blue-600 hover:text-white hover:border-2 hover:border-blue-600 px-5 py-2 rounded-full transition-all duration-100 ease-in"
           >
             About
           </Link>
@@ -35,39 +49,39 @@ function Nav() {
           >
             <Link
               to="#"
-              className="text-blue-600 hover:bg-blue-600 hover:text-white hover:border-2 hover:border-blue-600 px-6 py-3 rounded-full transition-all duration-100 ease-in"
+              className="text-blue-600 hover:bg-blue-600 hover:text-white hover:border-2 hover:border-blue-600 px-5 py-2 rounded-full transition-all duration-100 ease-in"
             >
               Services
             </Link>
-            {/* Dropdown Menu */}
+            {/* Dropdown Menu for Desktop */}
             {isDropdownOpen && (
               <div className="absolute left-0 mt-2 bg-white shadow-lg rounded-md w-48 z-10">
                 <Link
-                  to="/services/web-development" // Updated path
+                  to="/services/web-development"
                   className="block px-4 py-2 text-blue-600 hover:bg-blue-600 hover:text-white transition-all duration-100 ease-in"
                 >
                   Web Development
                 </Link>
                 <Link
-                  to="/services/app-development" // Updated path
+                  to="/services/app-development"
                   className="block px-4 py-2 text-blue-600 hover:bg-blue-600 hover:text-white transition-all duration-100 ease-in"
                 >
                   App Development
                 </Link>
                 <Link
-                  to="/services/digital-marketing" // Updated path
+                  to="/services/digital-marketing"
                   className="block px-4 py-2 text-blue-600 hover:bg-blue-600 hover:text-white transition-all duration-100 ease-in"
                 >
                   Digital Marketing
                 </Link>
                 <Link
-                  to="/services/seo" // Updated path
+                  to="/services/seo"
                   className="block px-4 py-2 text-blue-600 hover:bg-blue-600 hover:text-white transition-all duration-100 ease-in"
                 >
                   SEO Optimization
                 </Link>
                 <Link
-                  to="/services/ui-ux-design" // Updated path
+                  to="/services/ui-ux-design"
                   className="block px-4 py-2 text-blue-600 hover:bg-blue-600 hover:text-white transition-all duration-100 ease-in"
                 >
                   UI/UX Design
@@ -77,34 +91,13 @@ function Nav() {
           </div>
         </div>
 
-        {/* Logo */}
-        <div className="flex items-center space-x-3 mx-auto">
-          <img
-            src="https://i.imgur.com/9gxMIrq.png"
-            alt="Logo"
-            className="h-28"
-          />
-        </div>
-
-        {/* Right Links */}
+        {/* Right Links (hidden on small screens) */}
         <div className="flex space-x-12 text-lg font-medium hidden md:flex items-center">
           <Link
             to="/contact"
-            className="text-blue-600 hover:bg-blue-600 hover:text-white hover:border-2 hover:border-blue-600 px-6 py-3 rounded-full transition-all duration-100 ease-in-out"
+            className="contact-link text-blue-600 hover:bg-blue-600 hover:text-white hover:border-2 hover:border-blue-600 px-5 py-2 rounded-full transition-all duration-100 ease-in-out"
           >
             Contact
-          </Link>
-          <Link
-            to="/team"
-            className="text-blue-600 hover:bg-blue-600 hover:text-white hover:border-2 hover:border-blue-600 px-6 py-3 rounded-full transition-all duration-100 ease-in-out"
-          >
-            Our team
-          </Link>
-          <Link
-            to="/works"
-            className="text-blue-600 hover:bg-blue-600 hover:text-white hover:border-2 hover:border-blue-600 px-6 py-3 rounded-full transition-all duration-100 ease-in-out"
-          >
-            Works
           </Link>
         </div>
 
@@ -134,42 +127,67 @@ function Nav() {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden w-full flex flex-col space-y-4 mt-4 px-6 py-5 bg-white shadow-xl z-30 transition-all duration-300 ease-in-out">
+        <div className="md:hidden w-full flex flex-col space-y-4 mt-4 px-6 py-4 bg-white shadow-xl z-30 transition-all duration-300 ease-in-out">
           <Link
             to="/"
-            className="text-blue-600 hover:bg-blue-600 hover:text-white hover:border-2 hover:border-blue-600 px-6 py-3 rounded-full transition-all duration-300 ease-in-out"
+            className="text-blue-600 hover:bg-blue-600 hover:text-white hover:border-2 hover:border-blue-600 px-5 py-2 rounded-full transition-all duration-300 ease-in-out"
           >
             Home
           </Link>
           <Link
             to="/about"
-            className="text-blue-600 hover:bg-blue-600 hover:text-white hover:border-2 hover:border-blue-600 px-6 py-3 rounded-full transition-all duration-300 ease-in-out"
+            className="text-blue-600 hover:bg-blue-600 hover:text-white hover:border-2 hover:border-blue-600 px-5 py-2 rounded-full transition-all duration-300 ease-in-out"
           >
             About
           </Link>
-          <Link
-            to="/services"
-            className="text-blue-600 hover:bg-blue-600 hover:text-white hover:border-2 hover:border-blue-600 px-6 py-3 rounded-full transition-all duration-300 ease-in-out"
-          >
-            Services
-          </Link>
+          <div className="relative">
+            <button
+              onClick={toggleMobileDropdown} // Toggle dropdown on click
+              className="text-blue-600 hover:bg-blue-600 hover:text-white hover:border-2 hover:border-blue-600 px-5 py-2 rounded-full transition-all duration-300 ease-in-out"
+            >
+              Services
+            </button>
+            {/* Dropdown for Mobile */}
+            {isMobileDropdownOpen && (
+              <div className="w-full bg-white shadow-lg rounded-md z-10">
+                <Link
+                  to="/services/web-development"
+                  className="block px-4 py-2 text-blue-600 hover:bg-blue-600 hover:text-white transition-all duration-100 ease-in"
+                >
+                  Web Development
+                </Link>
+                <Link
+                  to="/services/app-development"
+                  className="block px-4 py-2 text-blue-600 hover:bg-blue-600 hover:text-white transition-all duration-100 ease-in"
+                >
+                  App Development
+                </Link>
+                <Link
+                  to="/services/digital-marketing"
+                  className="block px-4 py-2 text-blue-600 hover:bg-blue-600 hover:text-white transition-all duration-100 ease-in"
+                >
+                  Digital Marketing
+                </Link>
+                <Link
+                  to="/services/seo"
+                  className="block px-4 py-2 text-blue-600 hover:bg-blue-600 hover:text-white transition-all duration-100 ease-in"
+                >
+                  SEO Optimization
+                </Link>
+                <Link
+                  to="/services/ui-ux-design"
+                  className="block px-4 py-2 text-blue-600 hover:bg-blue-600 hover:text-white transition-all duration-100 ease-in"
+                >
+                  UI/UX Design
+                </Link>
+              </div>
+            )}
+          </div>
           <Link
             to="/contact"
-            className="text-blue-600 hover:bg-blue-600 hover:text-white hover:border-2 hover:border-blue-600 px-6 py-3 rounded-full transition-all duration-300 ease-in-out"
+            className="contact-link text-blue-600 hover:bg-blue-600 hover:text-white hover:border-2 hover:border-blue-600 px-5 py-2 rounded-full transition-all duration-300 ease-in-out"
           >
             Contact
-          </Link>
-          <Link
-            to="/team"
-            className="text-blue-600 hover:bg-blue-600 hover:text-white hover:border-2 hover:border-blue-600 px-6 py-3 rounded-full transition-all duration-300 ease-in-out"
-          >
-            Team
-          </Link>
-          <Link
-            to="/works"
-            className="text-blue-600 hover:bg-blue-600 hover:text-white hover:border-2 hover:border-blue-600 px-6 py-3 rounded-full transition-all duration-300 ease-in-out"
-          >
-            Works
           </Link>
         </div>
       )}
